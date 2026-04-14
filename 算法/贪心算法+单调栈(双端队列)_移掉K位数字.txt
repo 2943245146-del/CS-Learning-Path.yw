@@ -1,0 +1,40 @@
+// LeetCode 402. 移除K位数字
+// 题目描述
+// 给定一个以字符串表示的非负整数 num，移除这个数中的 k 位数字，使得剩下的数字最小.
+//时间复杂度:O(n)，其中n是字符串num的长度。每个字符最多被访问两次，一次是入栈，一次是出栈。
+//空间复杂度:O(n)，最坏情况下，栈中可能存储所有的字符。
+class Solution {
+public:
+    string removeKdigits(string num, int k) {
+        if(k>=num.size()) return "0";//如果要删除的数字个数大于等于字符串的长度，那么结果就是0
+        for(int i=0;i<k;i++)
+        {
+            if(num[i]=='0')
+            {
+                num=num.substr(i+1,num.size()-i-1);//如果当前字符是0，那么直接删除它以及它前面的所有字符，因为这些字符对结果没有影响
+                k-=i;
+                break;
+            }
+        }
+        if(k>=num.size()) return"0";
+        if(k==0) return num;
+        deque<char> p;
+        for(auto e:num)//遍历字符串中的每个字符
+        {
+            while(!p.empty()&&k&&p.back()>e)//如果当前字符比栈顶元素小，并且还可以删除元素，就删除栈顶元素
+            {
+                    p.pop_back();
+                    k--;
+            }
+            p.push_back(e);
+        }
+        while(k--) p.pop_back();
+        while(p.size()>1&&p[0]=='0') p.pop_front();//删除结果中的前导0
+        string s="";//将结果中的字符拼接成字符串
+        for(auto e:p)
+        {
+            s+=e;
+        }
+        return s;
+    }
+};
