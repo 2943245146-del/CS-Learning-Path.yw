@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+//队列的模拟实现;
+const int N=1e3+10;
+int q[N],head=0,tail=0;
+void push(int x)
+{    q[++tail]=x;
+}
+void pop()
+{
+    head++;
+}
+int front()
+{    return q[head+1];
+}
+int back()
+{    return q[tail];
+}
+bool empty()
+{    return head==tail;
+}
+int size()
+{    return tail-head;
+}
+int main()
+{
+    for(int i=1;i<=10;i++)
+    {
+        push(i);
+    }
+    while(!empty())
+    {
+        cout << front()<<" "<<back() <<endl;
+        pop();
+    }
+    return 0;
+}
