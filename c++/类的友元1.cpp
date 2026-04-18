@@ -7,10 +7,12 @@ private:
     friend class Admin;//将Admin类声明为Employee类的友元类，使Admin类能够访问Employee类的私有成员
 public:
     Employee(int a)
-    {        age=a+5;
+    {        
+        age=a+5;
     }
     int GetAge()
-    {        return age;
+    {        
+        return age;
     }
 };
 class Admin  
