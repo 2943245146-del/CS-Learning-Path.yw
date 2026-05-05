@@ -26,6 +26,7 @@ void test2()
 {
     person p1(18);
     person p2(5);
+    //链式编程思想
     p2.personAddage(p1).personAddage(p1).personAddage(p1);//把p1的年龄加到p2的年龄上
     cout<<p2.age<<endl;
 }
