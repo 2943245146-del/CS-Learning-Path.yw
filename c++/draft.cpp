@@ -1,24 +1,22 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-class a
-{
-    double t1,r;
-    public:
-    a(double t1,double r)
-    {
-        this->t1=t1;
-        this->r=r;
-    }
-    friend double count(a &a)
-    {
-        a.t1+=a.r*a.t1;
-        return a.t1;
-    }
-};
+int fun(int);
+int Array[]={1,2,3,4,5};
 int main()
 {
-    a a1(160.6,0.64),a2(76.8,0.6);
-    cout<<count(a1)<<endl;
-    cout<<count(a2)<<endl;
+    try{
+        cout<<"Array[1] = "<<fun(1)<<endl;
+        cout<<"Array[10] = "<<fun(6)<<endl;
+        cout<<"Array[3] ="<<fun(4)<<endl;
+    }
+    catch(int)
+    {
+        cout<<"Subscription is out of range"<<endl;
+
+    }
     return 0;
+}
+int fun(int i)
+{if(i>=5) throw i;
+return Array[i];
 }
